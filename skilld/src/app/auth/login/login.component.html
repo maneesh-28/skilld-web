@@ -1,0 +1,34 @@
+<p>login works!</p>
+
+
+<div class="min-h-screen flex items-center justify-center bg-cover bg-center" 
+     style="background-image: url('assets/library-bg.jpg');">
+  <div class="w-full max-w-md p-6 bg-white/30 backdrop-blur-md shadow-lg rounded-xl">
+    <h2 class="text-2xl font-bold text-center mb-4">login to skilld</h2>
+
+    <!-- User Role Tabs -->
+    <div class="flex justify-center space-x-2 mb-4">
+      <button class="px-4 py-1 bg-green-300 text-black rounded">student</button>
+      <button class="px-4 py-1 border border-gray-300 rounded">teacher</button>
+      <button class="px-4 py-1 border border-gray-300 rounded">admin</button>
+    </div>
+
+    <!-- Login Form -->
+    <form>
+      <label class="block text-gray-700">E-mail</label>
+      <input type="email" class="w-full p-2 mb-4 border rounded" placeholder="Enter your email">
+
+      <label class="block text-gray-700">PASSWORD</label>
+      <input type="password" class="w-full p-2 mb-4 border rounded" placeholder="Enter your password">
+
+      <div class="flex items-center mb-4">
+        <input type="checkbox" id="remember-me" class="mr-2">
+        <label for="remember-me" class="text-gray-700">REMEMBER ME</label>
+      </div>
+
+      <button class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">
+        login
+      </button>
+    </form>
+  </div>
+</div>
