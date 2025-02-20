@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  showPassword: boolean = false; // Track password visibility
+  userType: string = 'student'; // Default selection
 
+
+  togglePassword(): void {
+    this.showPassword = !this.showPassword;
+  }
 }
+

@@ -37,6 +37,10 @@ module.exports = {
           black: '#000000',  // Black (you can keep it this way)
         },
       },
+      backgroundImage: {
+        'image1': "url('/assets/img/bg1.jpg')",
+        'image2': "url('/assets/img/bg2.jpg')",
+      },
     },
   },
   plugins: [],
