@@ -1,14 +1,20 @@
-const pool = require('../index'); // PostgreSQL connection
+const pool = require('../config/db'); // Correct import for PostgreSQL connection
+
 
 // Get all users
 const getUsers = async (req, res) => {
     try {
-        const result = await pool.query('SELECT * FROM userlist');
-        res.json(result.rows);
+        const client = await pool.connect(); // Connect to the database
+        const result = await client.query('SELECT user_id, name, username, email FROM userlist'); // Fetch all users without password hash
+
+        client.release(); // Release the connection
+        res.json(result.rows); // Send data as JSON response
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 };
+
 
 // Get user by ID
 const getUserById = async (req, res) => {
