@@ -6,6 +6,8 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) // Lazy load AuthModule,
   },
+  { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/login' } // Handle unknown route
 ];
 
 @NgModule({

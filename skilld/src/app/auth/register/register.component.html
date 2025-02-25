@@ -9,19 +9,19 @@
                 <!-- Full Name -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
-                    <input type="text"  name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Name" required>
+                    <input type="text" [(ngModel)]="newUser.name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter your Name" required>
                 </div>
                 
                 <!-- Username -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                    <input type="text"  name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter new username" required>
+                    <input type="text" [(ngModel)]="newUser.username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter new username" required>
                 </div>
                 
                 <!-- Email -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Your Email</label>
-                    <input type="email"  name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@company.com" required>
+                    <input type="email" [(ngModel)]="newUser.email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="name@company.com" required>
                 </div>
                 
                 <!-- Mobile Number -->
@@ -43,14 +43,14 @@
                 <!-- Password -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Enter a password</label>
-                    <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
+                    <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="newUser.password"name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Password" required>
                 </div>
                 
                 <!-- Confirm Password -->
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900">Confirm Password</label>
                     <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="confirmPassword" name="confirmPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Confirm Password" required>
-                    <div *ngIf="confirmPassword !== password && confirmPassword" class="text-red-500 text-sm">Passwords do not match!</div>
+                    <div *ngIf="confirmPassword !== newUser.password && confirmPassword" class="text-red-500 text-sm">Passwords do not match!</div>
                 </div>
             
             <!-- Show Password Checkbox -->
