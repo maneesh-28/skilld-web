@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,9 @@ export class LoginComponent {
     password: '' 
   };
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private toastr: ToastrService
+  ) {}
 
   togglePassword(): void {
     this.showPassword = !this.showPassword;
@@ -26,10 +29,12 @@ export class LoginComponent {
     this.authService.login(this.user).subscribe(
       (response) => {
         console.log('Login successful', response);
+        this.toastr.success('Login Successful!');
         localStorage.setItem('token', response.token);
       },
       (error) => {
         console.error('Login failed', error);
+        this.toastr.error('Error during login. Please try again!');
       }
     );
   }

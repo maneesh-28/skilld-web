@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,9 @@ export class RegisterComponent {
   };
 
   
-constructor(private authService: AuthService) {}
+constructor(private authService: AuthService,
+  private toastr: ToastrService
+) {}
 
 
   // Function to toggle password visibility
@@ -31,16 +34,20 @@ constructor(private authService: AuthService) {}
    // Function to handle form submission
    register() {
     if (this.newUser.password !== this.confirmPassword) {
-      alert('Passwords do not match!');
+      // alert('Passwords do not match!');
+      this.toastr.error('Passwords do not match!');
       return;
     }
 
     this.authService.register(this.newUser).subscribe(
       (response) => {
         console.log('Registration successful', response);
+        this.toastr.success('Account created successfully!');
+
       },
       (error) => {
         console.error('Registration failed', error);
+        this.toastr.error('Failed to register. Please try again.');
       }
     );
   }
