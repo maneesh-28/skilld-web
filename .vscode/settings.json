@@ -1,0 +1,5 @@
+{
+    "github.copilot.editor.enableCodeActions": false,
+    "github.copilot.renameSuggestions.triggerAutomatically": false,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false
+}

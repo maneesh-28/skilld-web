@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#f65429', // Use DEFAULT for the main color
+          DEFAULT: '#f65429' , // Use DEFAULT for the main color
           50: '#fdebd9',    // Lighter shades (optional)
           100: '#fbd7b9',   
           200: '#f9c399',
@@ -40,6 +40,9 @@ module.exports = {
       backgroundImage: {
         'image1': "url('/assets/img/bg1.jpg')",
         'image2': "url('/assets/img/bg2.jpg')",
+      },
+      fontFamily: {
+        kagitingan: ['Kagitingan', 'sans-serif'],
       },
     },
   },
