@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  role: string = 'student';// Stores the selected role
+  // role: string = 'student';// Stores the selected role
   password: string = ''; // Stores the password input
   confirmPassword: string = ''; // Stores the confirm password input
   showPassword: boolean = false; // Controls password visibility
@@ -17,7 +17,8 @@ export class RegisterComponent {
     name: '',
     username: '', 
     email: '', 
-    password: '' 
+    password: '' ,
+    role: 'student',
   };
 
   
@@ -38,6 +39,8 @@ constructor(private authService: AuthService,
       this.toastr.error('Passwords do not match!');
       return;
     }
+     // Ensure role is assigned before sending the request
+  // this.newUser.role = this.role;
 
     this.authService.register(this.newUser).subscribe(
       (response) => {
