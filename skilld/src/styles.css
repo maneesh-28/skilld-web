@@ -5,3 +5,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'Kagitingan';
+    src: url('/assets/font/Kagitingan-Bold.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  

@@ -5,7 +5,7 @@ const pool = require('../config/db'); // Correct import for PostgreSQL connectio
 const getUsers = async (req, res) => {
     try {
         const client = await pool.connect(); // Connect to the database
-        const result = await client.query('SELECT user_id, name, username, email FROM userlist'); // Fetch all users without password hash
+        const result = await client.query('SELECT user_id, name, username, email, role FROM userlist'); // Fetch all users without password hash
 
         client.release(); // Release the connection
         res.json(result.rows); // Send data as JSON response
@@ -34,6 +34,13 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
     try {
         const { name, username, email, role, password_hash } = req.body;
+       
+        // Ensure only valid roles are accepted
+        const validRoles = ['student', 'teacher', 'admin'];
+        if (!validRoles.includes(role)) {
+            return res.status(400).json({ message: 'Invalid role selected' });
+        }
+
         const result = await pool.query(
             'INSERT INTO userlist (name, username, email, role, password_hash) VALUES ($1, $2, $3, $4, $5) RETURNING *',
             [name, username, email, role, password_hash]
@@ -49,6 +56,14 @@ const updateUser = async (req, res) => {
     try {
         const { id } = req.params;
         const { name, username, email, role } = req.body;
+
+        // Ensure only valid roles are accepted
+        const validRoles = ['student', 'teacher', 'admin'];
+        if (!validRoles.includes(role)) {
+            return res.status(400).json({ message: 'Invalid role selected' });
+        }
+
+        
         const result = await pool.query(
             'UPDATE userlist SET name = $1, username = $2, email = $3, role = $4 WHERE user_id = $5 RETURNING *',
             [name, username, email, role, id]

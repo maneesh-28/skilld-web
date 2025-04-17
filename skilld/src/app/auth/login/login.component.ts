@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent {
   };
 
   constructor(private authService: AuthService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   togglePassword(): void {
@@ -30,8 +32,17 @@ export class LoginComponent {
       (response) => {
         console.log('Login successful', response);
         this.toastr.success('Login Successful!');
-        localStorage.setItem('token', response.token);
-      },
+
+         // Store user and notify components
+      this.authService.setUser(response.user);
+
+         // Store token and user info in local storage
+         localStorage.setItem('token', response.token);
+        //  localStorage.setItem('user', JSON.stringify(response.user));
+ 
+         // Redirect to home or another valid page
+         this.router.navigate(['/shared/header']);
+       },
       (error) => {
         console.error('Login failed', error);
         this.toastr.error('Error during login. Please try again!');
